@@ -7,20 +7,15 @@ node {
 
   stage('Build') {
     // you should build this repo with a maven build step here
-        steps {
          withMaven (maven : 'maven3') {
                 sh "mvn package"
                 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
             }
-        echo "hello"
-        }
   }
   // you should add a test report here
 
   stage('Test') {
-      steps {
           sh 'make check || true'
-          junit '**/target/*.xml'
-      }
+          junit '**/target/**/*.xml'
     }
 }
