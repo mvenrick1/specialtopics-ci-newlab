@@ -13,6 +13,7 @@ node {
                 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
             }
         echo "hello"
+        }
   }
   // you should add a test report here
 
