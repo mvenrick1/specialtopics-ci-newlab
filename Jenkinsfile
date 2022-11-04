@@ -7,7 +7,6 @@ node {
 
   stage('Build') {
     // you should build this repo with a maven build step here
-
          withMaven (maven : 'maven3') {
                 sh "mvn package"
                 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
@@ -17,6 +16,6 @@ node {
 
   stage('Test') {
           sh 'make check || true'
-          junit '**/target/*.xml'
+          junit '**/target/**/*.xml'
     }
 }
